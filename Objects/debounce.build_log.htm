@@ -34,29 +34,55 @@ C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32
 C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32f3xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-main.c(21): warning: 'return' will never be executed [-Wunreachable-code-return]
-        return 0;
-               ^
-main.c(24): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void SysTick_Handler(){//przerwanie od SysTickTimer jest wywolywane co 1ms
-                    ^
-                     void
-main.c(24): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
-void SysTick_Handler(){//przerwanie od SysTickTimer jest wywolywane co 1ms
-     ^
-main.c(24): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void SysTick_Handler(){//przerwanie od SysTickTimer jest wywolywane co 1ms
-^
-static 
-main.c(43): warning: while loop has empty body [-Wempty-body]
-while(!(RCC->CR & RCC_CR_PLLRDY));//sprawdzanie czy PLL jest gotowe  
-                                 ^
-main.c(43): note: put the semicolon on a separate line to silence this warning
-6 warnings generated.
+main.c(60): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void timer2_config(){
+                  ^
+                   void
+main.c(78): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void timer16_config(){
+                   ^
+                    void
+main.c(93): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+ void EXTI0_IRQHandler(){
+                      ^
+                       void
+main.c(93): warning: no previous prototype for function 'EXTI0_IRQHandler' [-Wmissing-prototypes]
+ void EXTI0_IRQHandler(){
+      ^
+main.c(93): note: declare 'static' if the function is not intended to be used outside of this translation unit
+ void EXTI0_IRQHandler(){
+ ^
+ static 
+main.c(100): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+ void TIM1_UP_TIM16_IRQHandler() {
+                              ^
+                               void
+main.c(100): warning: no previous prototype for function 'TIM1_UP_TIM16_IRQHandler' [-Wmissing-prototypes]
+ void TIM1_UP_TIM16_IRQHandler() {
+      ^
+main.c(100): note: declare 'static' if the function is not intended to be used outside of this translation unit
+ void TIM1_UP_TIM16_IRQHandler() {
+ ^
+ static 
+main.c(110): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+ void TIM2_IRQHandler(){
+                     ^
+                      void
+main.c(115): warning: no newline at end of file [-Wnewline-eof]
+ }
+  ^
+main.c(110): warning: no previous prototype for function 'TIM2_IRQHandler' [-Wmissing-prototypes]
+ void TIM2_IRQHandler(){
+      ^
+main.c(110): note: declare 'static' if the function is not intended to be used outside of this translation unit
+ void TIM2_IRQHandler(){
+ ^
+ static 
+11 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=1172 RO-data=440 RW-data=4 ZI-data=1640  
-".\Objects\debounce.axf" - 0 Error(s), 6 Warning(s).
+Program Size: Code=1268 RO-data=408 RW-data=0 ZI-data=1632  
+".\Objects\debounce.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 

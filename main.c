@@ -59,13 +59,6 @@ int main(void){
 	ButtonConfig();
 	LedConfig();
 	while(1){
-	/*
-		funkcja sprawdzajaca, czy przycisk zostal wcisniety
-		jesli zostal wcisniety inkrementuje zmienna 
-		jesli zmienna osiagnie okreslona wartosc to zmieniam ActualState
-		funkcja sprawdzajaca ile czasu uplynelo od ostatniego jej wywolania 
-		jesli uplynal czas okreslony przez State to zmieniam stan diody
-	*/
 		if (PushButtonCheck) ButtonState++;
 		if((ButtonState>ButtonClick) && (TimeLed.time>Delay) ) UpdateMachineState(&ms);
 		if(TimeLed.time>TimeLed.BlinkTime)	
@@ -79,9 +72,6 @@ int main(void){
 }
 
 void UpdateMachineState(MachineState *ms){
-	/*
-		Zmieniam tylko ActualState
-	*/
 	ButtonState=0;
 	 switch(ms->ActualState) {
     case LowSpeed:

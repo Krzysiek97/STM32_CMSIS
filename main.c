@@ -61,19 +61,19 @@ int main(void){
 	ButtonConfig();
 	LedConfig();
 	while(1){
-		if (PushButtonCheck) ButtonState++;
-		if(ButtonState>ButtonClick) 
+    if (PushButtonCheck) ButtonState++;
+    if(ButtonState>ButtonClick) 
 			{
-				TimeLed.Flag=true;
-				TimeLed.time=0;
-				ButtonState=0;
+        TimeLed.Flag=true;
+        TimeLed.time=0;
+        ButtonState=0;
 			}
 			
 		if (TimeLed.time>Delay && TimeLed.Flag==true) UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
 		if(TimeLed.time>TimeLed.BlinkTime)	
 			{
-				ToggleLed;
-				TimeLed.time=0;
+        ToggleLed;
+        TimeLed.time=0;
 			}
 			
 	}
@@ -81,8 +81,8 @@ int main(void){
 }
 
 void UpdateMachineState(MachineState *ms){
-	TimeLed.Flag=false;
-	switch(ms->ActualState) {
+  TimeLed.Flag=false;
+  switch(ms->ActualState) {
     case LowSpeed:
 			ms->ActualState = MediumSpeed;
 			TimeLed.BlinkTime=LedBlink2;

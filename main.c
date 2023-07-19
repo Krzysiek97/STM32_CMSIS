@@ -82,7 +82,7 @@ int main(void){
 
 void UpdateMachineState(MachineState *ms){
 	TimeLed.Flag=false;
-		switch(ms->ActualState) {
+	switch(ms->ActualState) {
     case LowSpeed:
 			ms->ActualState = MediumSpeed;
 			TimeLed.BlinkTime=LedBlink2;

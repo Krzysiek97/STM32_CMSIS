@@ -18,7 +18,9 @@
 typedef enum{
 	LowSpeed,
 	MediumSpeed,
-	HighSpeed
+	HighSpeed,
+  ButtonClick,
+  ButtonRecognize
 }State;
 
 /*
@@ -26,6 +28,7 @@ typedef enum{
 */
 typedef struct{
 	State ActualState;
+  State OldState;
 }MachineState;
 /*
 	Button will be checked many times before it will be shown as pushed (defined by ButtonClick)
@@ -55,22 +58,29 @@ void LedConfig();
 
 int main(void){
   
-  MachineState ms={HighSpeed};
+  MachineState ms={HighSpeed,HighSpeed};
 	
   SysTick_Config(SystemCoreClock / 1000);
   ButtonConfig();
   LedConfig();
 while(1)
 {
-  if (PushButtonCheck) ButtonState++;
+  if (PushButtonCheck) 
+    {
+      ms.ActualState=ButtonClick;
+      UpdateMachineState(&ms);
+    }
   if(ButtonState>ButtonClick) 
     {
-      TimeLed.Flag=true;
-      TimeLed.time=0;
-      ButtonState=0;
+      ms.ActualState=ButtonRecognize;
+      UpdateMachineState(&ms);
     }
 			
-  if (TimeLed.time>Delay && TimeLed.Flag==true) UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
+  if (TimeLed.time>Delay && TimeLed.Flag==true) 
+    {
+      ms.ActualState = ms.OldState;
+      UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
+    }
   if(TimeLed.time>TimeLed.BlinkTime)	
     {
       ToggleLed;
@@ -82,22 +92,37 @@ while(1)
 }
 
 void UpdateMachineState(MachineState *ms){
-  TimeLed.Flag=false;
+  
   switch(ms->ActualState) {
     case LowSpeed:
 			ms->ActualState = MediumSpeed;
+      ms->OldState= MediumSpeed;
 			TimeLed.BlinkTime=LedBlink2;
+      TimeLed.Flag=false;
         break;
 
     case MediumSpeed:
 			ms->ActualState = HighSpeed;
+      ms->OldState= HighSpeed;
 			TimeLed.BlinkTime=LedBlink3;
+      TimeLed.Flag=false;
         break;
 
     case HighSpeed:
 			ms->ActualState = LowSpeed;
+      ms->OldState= LowSpeed;
 			TimeLed.BlinkTime=LedBlink1;
+      TimeLed.Flag=false;
         break;
+    case ButtonClick:
+			ms->ActualState = ms->OldState;
+      ButtonState++;
+        break; 
+    case ButtonRecognize:
+      TimeLed.Flag=true;
+      TimeLed.time=0;
+      ButtonState=0;
+        break;     
     }
 }
 

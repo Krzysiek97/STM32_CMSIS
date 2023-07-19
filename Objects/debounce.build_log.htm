@@ -34,70 +34,85 @@ C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32
 C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32f3xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-main.c(34): warning: no previous extern declaration for non-static variable 'ButtonState' [-Wmissing-variable-declarations]
+main.c(37): warning: no previous extern declaration for non-static variable 'ButtonState' [-Wmissing-variable-declarations]
 uint8_t ButtonState=0;
         ^
-main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t ButtonState=0;
 ^
-main.c(44): warning: no previous extern declaration for non-static variable 'TimeLed' [-Wmissing-variable-declarations]
+main.c(47): warning: no previous extern declaration for non-static variable 'TimeLed' [-Wmissing-variable-declarations]
 MeasureTime TimeLed={0,LedBlink3,false};
             ^
-main.c(44): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(47): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 MeasureTime TimeLed={0,LedBlink3,false};
 ^
-main.c(39): warning: padding size of 'MeasureTime' with 3 bytes to alignment boundary [-Wpadded]
+main.c(42): warning: padding size of 'MeasureTime' with 3 bytes to alignment boundary [-Wpadded]
 typedef struct{
         ^
-main.c(52): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(55): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void ButtonConfig();
                  ^
                   void
-main.c(53): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(56): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void LedConfig();
               ^
                void
-main.c(103): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(70): warning: integer constant not in range of enumerated type 'State' [-Wassign-enum]
+      ms.ActualState=ButtonClick;
+                     ^
+main.c(36): note: expanded from macro 'ButtonClick'
+#define ButtonClick 40
+                    ^
+main.c(117): warning: case value not in enumerated type 'State' [-Wswitch]
+    case ButtonClick:
+         ^
+main.c(36): note: expanded from macro 'ButtonClick'
+#define ButtonClick 40
+                    ^
+main.c(96): warning: enumeration value 'ButtonClick' not handled in switch [-Wswitch]
+  switch(ms->ActualState) {
+         ^~~~~~~~~~~~~~~
+main.c(131): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void ButtonConfig(){
                  ^
                   void
-main.c(103): warning: no previous prototype for function 'ButtonConfig' [-Wmissing-prototypes]
+main.c(131): warning: no previous prototype for function 'ButtonConfig' [-Wmissing-prototypes]
 void ButtonConfig(){
      ^
-main.c(52): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+main.c(55): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void ButtonConfig();
      ^
                   void
-main.c(110): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(138): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void LedConfig(){
               ^
                void
-main.c(110): warning: no previous prototype for function 'LedConfig' [-Wmissing-prototypes]
+main.c(138): warning: no previous prototype for function 'LedConfig' [-Wmissing-prototypes]
 void LedConfig(){
      ^
-main.c(53): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+main.c(56): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void LedConfig();
      ^
                void
-main.c(119): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(147): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void SysTick_Handler(){
                     ^
                      void
-main.c(121): warning: no newline at end of file [-Wnewline-eof]
+main.c(149): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-main.c(119): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+main.c(147): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
 void SysTick_Handler(){
      ^
-main.c(119): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(147): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void SysTick_Handler(){
 ^
 static 
-14 warnings generated.
+17 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=948 RO-data=424 RW-data=16 ZI-data=1640  
-".\Objects\debounce.axf" - 0 Error(s), 14 Warning(s).
+Program Size: Code=1036 RO-data=424 RW-data=16 ZI-data=1640  
+".\Objects\debounce.axf" - 0 Error(s), 17 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -125,8 +140,8 @@ Package Vendor: Keil
    * Component: Keil.Standalone::Device:Startup:1.11.3
       Source file:   MDK/Device/Source/ARM/STM32F3xx_OPT.s
       Include file:  Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h
-      Source file:   Drivers/CMSIS/Device/ST/STM32F3xx/Source/Templates/arm/startup_stm32f303xc.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F3xx/Source/Templates/system_stm32f3xx.c
+      Source file:   Drivers/CMSIS/Device/ST/STM32F3xx/Source/Templates/arm/startup_stm32f303xc.s
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

@@ -1,4 +1,5 @@
 #include "stm32f3xx.h"                  // Device header
+#include <stdbool.h>
 
 //Check if Button was pushed
 #define PushButtonCheck (GPIOA->IDR & GPIO_IDR_0)
@@ -38,11 +39,12 @@ uint8_t ButtonState=0;
 typedef struct{
 	int time;
 	int BlinkTime;
+	bool Flag;
 }MeasureTime;
-MeasureTime TimeLed={0,LedBlink3};
+MeasureTime TimeLed={0,LedBlink3,false};
 
 // Min time which have to past to change Machine State 
-#define Delay 50
+#define Delay 60
 /*
 		Declaration of functions
 */
@@ -59,15 +61,15 @@ int main(void){
 	ButtonConfig();
 	LedConfig();
 	while(1){
-	/*
-		funkcja sprawdzajaca, czy przycisk zostal wcisniety
-		jesli zostal wcisniety inkrementuje zmienna 
-		jesli zmienna osiagnie okreslona wartosc to zmieniam ActualState
-		funkcja sprawdzajaca ile czasu uplynelo od ostatniego jej wywolania 
-		jesli uplynal czas okreslony przez State to zmieniam stan diody
-	*/
 		if (PushButtonCheck) ButtonState++;
-		if((ButtonState>ButtonClick) && (TimeLed.time>Delay) ) UpdateMachineState(&ms);
+		if(ButtonState>ButtonClick) 
+			{
+				TimeLed.Flag=true;
+				TimeLed.time=0;
+				ButtonState=0;
+			}
+			
+		if (TimeLed.time>Delay && TimeLed.Flag==true) UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
 		if(TimeLed.time>TimeLed.BlinkTime)	
 			{
 				ToggleLed;
@@ -79,10 +81,7 @@ int main(void){
 }
 
 void UpdateMachineState(MachineState *ms){
-	/*
-		Zmieniam tylko ActualState
-	*/
-	ButtonState=0;
+	TimeLed.Flag=false;
 	 switch(ms->ActualState) {
     case LowSpeed:
         ms->ActualState = MediumSpeed;

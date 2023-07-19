@@ -34,67 +34,70 @@ C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32
 C:/Keil/Keil/STM32F3xx_DFP/2.2.2/Drivers/CMSIS/Device/ST/STM32F3xx/Include\stm32f3xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-main.c(33): warning: no previous extern declaration for non-static variable 'ButtonState' [-Wmissing-variable-declarations]
+main.c(34): warning: no previous extern declaration for non-static variable 'ButtonState' [-Wmissing-variable-declarations]
 uint8_t ButtonState=0;
         ^
-main.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t ButtonState=0;
 ^
-main.c(42): warning: no previous extern declaration for non-static variable 'TimeLed' [-Wmissing-variable-declarations]
-MeasureTime TimeLed={0,LedBlink3};
+main.c(44): warning: no previous extern declaration for non-static variable 'TimeLed' [-Wmissing-variable-declarations]
+MeasureTime TimeLed={0,LedBlink3,false};
             ^
-main.c(42): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-MeasureTime TimeLed={0,LedBlink3};
+main.c(44): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+MeasureTime TimeLed={0,LedBlink3,false};
 ^
-main.c(50): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(39): warning: padding size of 'MeasureTime' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct{
+        ^
+main.c(52): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void ButtonConfig();
                  ^
                   void
-main.c(51): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(53): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void LedConfig();
               ^
                void
-main.c(104): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void ButtonConfig(){
                  ^
                   void
-main.c(104): warning: no previous prototype for function 'ButtonConfig' [-Wmissing-prototypes]
+main.c(102): warning: no previous prototype for function 'ButtonConfig' [-Wmissing-prototypes]
 void ButtonConfig(){
      ^
-main.c(50): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+main.c(52): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void ButtonConfig();
      ^
                   void
-main.c(111): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(109): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void LedConfig(){
               ^
                void
-main.c(111): warning: no previous prototype for function 'LedConfig' [-Wmissing-prototypes]
+main.c(109): warning: no previous prototype for function 'LedConfig' [-Wmissing-prototypes]
 void LedConfig(){
      ^
-main.c(51): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+main.c(53): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void LedConfig();
      ^
                void
-main.c(120): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(118): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void SysTick_Handler(){
                     ^
                      void
-main.c(122): warning: no newline at end of file [-Wnewline-eof]
+main.c(120): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-main.c(120): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+main.c(118): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
 void SysTick_Handler(){
      ^
-main.c(120): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(118): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void SysTick_Handler(){
 ^
 static 
-13 warnings generated.
+14 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=904 RO-data=424 RW-data=12 ZI-data=1640  
-".\Objects\debounce.axf" - 0 Error(s), 13 Warning(s).
+Program Size: Code=948 RO-data=424 RW-data=16 ZI-data=1640  
+".\Objects\debounce.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 

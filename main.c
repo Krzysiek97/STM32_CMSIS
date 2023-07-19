@@ -55,28 +55,29 @@ void LedConfig();
 
 int main(void){
   
-	MachineState ms={HighSpeed};
+  MachineState ms={HighSpeed};
 	
-	SysTick_Config(SystemCoreClock / 1000);
-	ButtonConfig();
-	LedConfig();
-	while(1){
-    if (PushButtonCheck) ButtonState++;
-    if(ButtonState>ButtonClick) 
-			{
-        TimeLed.Flag=true;
-        TimeLed.time=0;
-        ButtonState=0;
-			}
+  SysTick_Config(SystemCoreClock / 1000);
+  ButtonConfig();
+  LedConfig();
+while(1)
+{
+  if (PushButtonCheck) ButtonState++;
+  if(ButtonState>ButtonClick) 
+    {
+      TimeLed.Flag=true;
+      TimeLed.time=0;
+      ButtonState=0;
+    }
 			
-		if (TimeLed.time>Delay && TimeLed.Flag==true) UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
-		if(TimeLed.time>TimeLed.BlinkTime)	
-			{
-        ToggleLed;
-        TimeLed.time=0;
-			}
+  if (TimeLed.time>Delay && TimeLed.Flag==true) UpdateMachineState(&ms);//to avoid that one state is omitted, it's used delay time
+  if(TimeLed.time>TimeLed.BlinkTime)	
+    {
+      ToggleLed;
+      TimeLed.time=0;
+    }
 			
-	}
+}
 		
 }
 

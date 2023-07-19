@@ -73,7 +73,7 @@ int main(void){
 		if(TimeLed.time>TimeLed.BlinkTime)	
 			{
 				ToggleLed;
-		    TimeLed.time=0;
+				TimeLed.time=0;
 			}
 			
 	}
@@ -82,20 +82,20 @@ int main(void){
 
 void UpdateMachineState(MachineState *ms){
 	TimeLed.Flag=false;
-	 switch(ms->ActualState) {
+		switch(ms->ActualState) {
     case LowSpeed:
-        ms->ActualState = MediumSpeed;
-				TimeLed.BlinkTime=LedBlink2;
+			ms->ActualState = MediumSpeed;
+			TimeLed.BlinkTime=LedBlink2;
         break;
 
     case MediumSpeed:
-        ms->ActualState = HighSpeed;
-				TimeLed.BlinkTime=LedBlink3;
+			ms->ActualState = HighSpeed;
+			TimeLed.BlinkTime=LedBlink3;
         break;
 
     case HighSpeed:
-        ms->ActualState = LowSpeed;
-				TimeLed.BlinkTime=LedBlink1;
+			ms->ActualState = LowSpeed;
+			TimeLed.BlinkTime=LedBlink1;
         break;
     }
 }

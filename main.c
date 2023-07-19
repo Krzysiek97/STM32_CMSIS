@@ -95,27 +95,27 @@ void UpdateMachineState(MachineState *ms){
   
   switch(ms->ActualState) {
     case LowSpeed:
-			ms->ActualState = MediumSpeed;
+      ms->ActualState = MediumSpeed;
       ms->OldState= MediumSpeed;
-			TimeLed.BlinkTime=LedBlink2;
+      TimeLed.BlinkTime=LedBlink2;
       TimeLed.Flag=false;
         break;
 
     case MediumSpeed:
-			ms->ActualState = HighSpeed;
+      ms->ActualState = HighSpeed;
       ms->OldState= HighSpeed;
-			TimeLed.BlinkTime=LedBlink3;
+      TimeLed.BlinkTime=LedBlink3;
       TimeLed.Flag=false;
         break;
 
     case HighSpeed:
-			ms->ActualState = LowSpeed;
+      ms->ActualState = LowSpeed;
       ms->OldState= LowSpeed;
-			TimeLed.BlinkTime=LedBlink1;
+      TimeLed.BlinkTime=LedBlink1;
       TimeLed.Flag=false;
         break;
     case ButtonClick:
-			ms->ActualState = ms->OldState;
+      ms->ActualState = ms->OldState;
       ButtonState++;
         break; 
     case ButtonRecognize:

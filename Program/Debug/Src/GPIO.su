@@ -1,4 +1,4 @@
 ../Src/GPIO.c:10:6:gpio_config	4	static
-../Src/GPIO.c:19:6:Config_GpioForSPI	4	static
-../Src/GPIO.c:36:6:CS_ForSPI_Set	4	static
-../Src/GPIO.c:39:6:CS_ForSPI_Reset	4	static
+../Src/GPIO.c:19:6:Config_GpioForSPI	8	static
+../Src/GPIO.c:38:6:CS_ForSPI_Set	4	static
+../Src/GPIO.c:41:6:CS_ForSPI_Reset	4	static

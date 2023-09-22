@@ -31,11 +31,13 @@ GPIOA->AFR[0]|=(5<<(7*4));//Its set AF5 for PA6
 GPIOA->MODER|=GPIO_MODER_MODER7_1;//alternate
 GPIOE->PUPDR|=GPIO_PUPDR_PUPDR7_1;//Pull down
 //PE3 CS -> Output
-GPIOE->MODER|=GPIO_MODER_MODER3_0;//tryb output
+GPIOE->MODER|=GPIO_MODER_MODER3_0;//Output
+
+CS_ForSPI_Set();//default value is high state
 }
 void CS_ForSPI_Set(){
-GPIOE->ODR|=GPIO_ODR_3;//jest stan niski-> zmieniam na wysoki
+GPIOE->ODR|=GPIO_ODR_3;
 }
 void CS_ForSPI_Reset(){
-GPIOE->ODR&=~GPIO_ODR_3;//jest stan wysoki-> zmieniam na niski
+GPIOE->ODR&=~GPIO_ODR_3;
 }
